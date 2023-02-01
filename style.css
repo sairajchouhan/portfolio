@@ -213,6 +213,7 @@ ul.nav_list {
 /* experience section */
 
 #experience {
+  display: none;
 }
 
 #experience > h1 {
@@ -261,4 +262,82 @@ ul.nav_list {
 .experience_card > p {
   font-size: 1rem;
   color: var(--slate11);
+}
+
+/* projects section  */
+
+#projects {
+}
+
+.projects_list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+#projects > h1 {
+  margin-bottom: 1rem;
+}
+
+.project {
+  border-radius: 0.25rem;
+  border: 1px solid var(--slate7);
+  flex: 1;
+  max-width: 50%;
+}
+
+.project:hover {
+  border: 1px solid var(--slate8);
+}
+
+.project_body {
+  padding: 1rem;
+}
+
+.project_body > h2 {
+  font-size: 1.5rem;
+  color: var(--slate12);
+  margin-bottom: 0.5rem;
+}
+.project_body > p {
+  font-size: 1rem;
+  color: var(--slate11);
+}
+
+.project_body > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  display: flex;
+}
+
+.project_body > ul li {
+  background-color: var(--slate3);
+  padding: 0.1rem 0.5rem;
+  margin-right: 0.5rem;
+  color: var(--slate11);
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.project .links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--slate7);
+}
+
+.project .links > a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--slate12);
+  flex: 1;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.project .links > a:hover {
+  text-decoration: underline;
 }
