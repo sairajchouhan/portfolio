@@ -218,6 +218,7 @@ ul.nav_list {
 
 .social_link:hover {
   color: var(--slate12);
+  text-decoration: underline;
 }
 
 /* experience section */
