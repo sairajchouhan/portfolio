@@ -97,7 +97,7 @@ h1 {
 header {
   /* position: sticky; */
   /* top: 1rem; */
-  display: none;
+  /* display: none; */
 }
 
 nav {
@@ -140,7 +140,7 @@ ul.nav_list {
 
 #home {
   height: 100%;
-  display: none;
+  /* display: none; */
 }
 
 .home_container {
@@ -213,7 +213,7 @@ ul.nav_list {
 /* experience section */
 
 #experience {
-  display: none;
+  /* display: none; */
 }
 
 #experience > h1 {
