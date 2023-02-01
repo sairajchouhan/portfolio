@@ -100,7 +100,6 @@ nav {
   margin-top: 1rem;
   border-radius: 0.25rem;
   padding: 0.5rem 0;
-
 }
 
 ul.nav_list {
@@ -124,4 +123,73 @@ ul.nav_list {
 .nav_list_a:hover {
   color: var(--slate12);
   background: var(--slate4);
+}
+
+/* home section */
+
+.home_container {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.my_img_container {
+  background: var(--slate2);
+  border-radius: 50%;
+  width: fit-content;
+  width: 25%;
+  height: 25%;
+  overflow: hidden;
+}
+
+.my_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+.home_body {
+  padding: 0 1rem;
+  width: 75%;
+  margin-left: 2rem;
+}
+
+.home_body > h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--slate12);
+}
+
+.home_body > p {
+  font-size: 1rem;
+  color: var(--slate11);
+  margin-bottom: 1rem;
+}
+
+.home_body > p > span {
+  color: var(--slate12);
+}
+
+.social_links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.social_link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--slate11);
+  font-size: 1rem;
+}
+
+.social_link > span {
+  margin-right: 0.5rem;
+}
+
+.social_link:hover {
+  color: var(--slate12);
 }
