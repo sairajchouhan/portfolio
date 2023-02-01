@@ -41,7 +41,6 @@
 
 html,
 body {
-  height: 100%;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
@@ -87,18 +86,18 @@ h1 {
 
 #root {
   isolation: isolate;
-  max-width: 50%;
+  max-width: 90%;
   width: 100%;
   margin: 0 auto;
 }
 
 /* ui styles */
 
-header {
-  /* position: sticky; */
-  /* top: 1rem; */
-  /* display: none; */
-}
+/* header { */
+/*   position: sticky; */
+/*   top: 1rem; */
+/*   display: none; */
+/* } */
 
 nav {
   display: flex;
@@ -139,8 +138,9 @@ ul.nav_list {
 /* home section */
 
 #home {
-  height: 100%;
+  /* height: 100%; */
   /* display: none; */
+  margin-bottom: 2rem;
 }
 
 .home_container {
@@ -214,6 +214,7 @@ ul.nav_list {
 
 #experience {
   /* display: none; */
+  margin-bottom: 2rem;
 }
 
 #experience > h1 {
@@ -267,6 +268,7 @@ ul.nav_list {
 /* projects section  */
 
 #projects {
+  margin-bottom: 2rem;
 }
 
 .projects_list {
