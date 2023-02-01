@@ -334,6 +334,20 @@ ul.nav_list {
   align-items: center;
   border-top: 1px solid var(--slate7);
   margin-top: auto;
+  position: relative
+}
+
+
+.project .links::after {
+  content: "";
+  border: 0.8px solid var(--slate7);
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .project .links > a {
