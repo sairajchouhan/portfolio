@@ -18,66 +18,16 @@
     </nav>
   </header>
 
-  <section id="home">
-      {{personal_details}}
-  </section>
+  <section id="home">{{personal_details}}</section>
 
   <section id="experience">
     <h1>Experience</h1>
     {{experience}}
-
   </section>
 
   <section id="projects">
     <h1>Projects</h1>
-    <div class="projects_list">
-      <div class="project">
-        <div class="project_body">
-          <h2>S2Media</h2>
-          <ul>
-            <li class="pill">Next.js</li>
-            <li class="pill">Node.js</li>
-            <li class="pill">Express</li>
-            <li class="pill">Postgres</li>
-          </ul>
-          <p>
-            Built a Fullstack social media application with React and Node.js.
-            Implemented major functionalies like CRUD for posts, user
-            authentication, likes, comments, replies and more, follow and
-            unfollow users, and search for users.
-          </p>
-        </div>
-
-        <div class="links">
-          <a href="https://s2media.vercel.app/" target="_blank" rel="noopener noreferer">View</a>
-          <a href="https://github.com/sairajchouhan/s2media" target="_blank" rel="noopener noreferer">
-            Source</a>
-        </div>
-      </div>
-      <div class="project">
-        <div class="project_body">
-          <h2>React Room Chat</h2>
-          <ul>
-            <li class="pill">React.js</li>
-            <li class="pill">Firebase</li>
-            <li class="pill">Chakra Ui</li>
-            <li class="pill">Firestore</li>
-          </ul>
-          <p>
-            Built a Room chat application with React and Firebase.Implemented
-            features, create, delete rooms, invite roommates, ban from a room
-            and more.Used technologies like Firebase, React, and deployed to
-            Vercel.
-          </p>
-        </div>
-
-        <div class="links">
-          <a href="https://s2media.vercel.app/" target="_blank" rel="noopener noreferer">View</a>
-          <a href="https://github.com/sairajchouhan/s2media" target="_blank" rel="noopener noreferer">
-            Source</a>
-        </div>
-      </div>
-    </div>
+    <div class="projects_list">{{projects}}</div>
   </section>
 
   <section id="blog">

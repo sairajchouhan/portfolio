@@ -183,7 +183,73 @@ export const experience_query_response = [
   ],
 ];
 
+export const projects_query_response = [
+  [
+    {
+      _version: 1,
+      locale: "en-us",
+      uid: "blt1e3e2ccda28c544e",
+      ACL: {},
+      _in_progress: false,
+      created_at: "2023-02-05T14:21:42.741Z",
+      created_by: "bltae6c61d9d110a17c",
+      deployed_url: {
+        title: "deployed_url_react_room_chat",
+        href: "https://react-room-chat.vercel.app/",
+      },
+      description:
+        "Built a Room chat application with React and Firebase.Implemented features, create, delete rooms, invite roommates, ban from a room and more.Used technologies like Firebase, React, and deployed to Vercel.",
+      project_tags: ["React.js", "Firebase", "Chakra UI", "Firestore"],
+      source_url: {
+        title: "source_url_react_room_chat",
+        href: "https://github.com/sairajchouhan/react-room-chat",
+      },
+      tags: [],
+      title: "React Room Chat",
+      updated_at: "2023-02-05T14:21:42.741Z",
+      updated_by: "bltae6c61d9d110a17c",
+      publish_details: {
+        environment: "bltcfbc84ac492f6de4",
+        locale: "en-us",
+        time: "2023-02-05T14:21:46.123Z",
+        user: "bltae6c61d9d110a17c",
+      },
+    },
+    {
+      _version: 1,
+      locale: "en-us",
+      uid: "blt564690939940e9bd",
+      ACL: {},
+      _in_progress: false,
+      created_at: "2023-02-05T14:16:20.508Z",
+      created_by: "bltae6c61d9d110a17c",
+      deployed_url: {
+        title: "deployed_url_s2media",
+        href: "https://s2media.vercel.app/",
+      },
+      description:
+        "Built a Fullstack social media application with React and Node.js. Implemented major functionalities like CRUD for posts, user authentication, likes, comments, replies and more, follow and unfollow users, and search for users.",
+      project_tags: ["Next.js", "Node.js", "Express", "Postgres"],
+      source_url: {
+        title: "source_url_s2media",
+        href: "https://github.com/sairajchouhan/s2media",
+      },
+      tags: [],
+      title: "S2Media",
+      updated_at: "2023-02-05T14:16:20.508Z",
+      updated_by: "bltae6c61d9d110a17c",
+      publish_details: {
+        environment: "bltcfbc84ac492f6de4",
+        locale: "en-us",
+        time: "2023-02-05T14:16:28.851Z",
+        user: "bltae6c61d9d110a17c",
+      },
+    },
+  ],
+];
+
 export type HeaderQueryResponse = typeof header_query_response;
 export type PersonalDetailsQueryResponse =
   typeof personal_details_query_response;
 export type ExperienceQueryResponse = typeof experience_query_response;
+export type ProjectsQueryResponse = typeof projects_query_response;

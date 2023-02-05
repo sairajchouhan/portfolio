@@ -10,6 +10,8 @@ import {
   header_query_response,
   personal_details_query_response,
   experience_query_response,
+  projects_query_response,
+  ProjectsQueryResponse,
 } from "./types";
 
 dotenv.config({
@@ -153,37 +155,80 @@ const get_experience_html = (data_: ExperienceQueryResponse) => {
   return items.join("");
 };
 
+const get_projects_html = (data_: ProjectsQueryResponse) => {
+  const data = data_[0];
+  const items: string[] = [];
+
+  data.forEach((project) => {
+    const html = `
+      <div class="project">
+        <div class="project_body">
+          <h2>${project.title}</h2>
+          <ul>
+              ${project.project_tags
+                .map((tag) => `<li class="pill" >${tag}</li>`)
+                .join("\n")}
+          </ul>
+          <p>
+            ${project.description}
+          </p>
+        </div>
+
+        <div class="links">
+          <a href="${
+            project.source_url.href
+          }" target="_blank" rel="noopener noreferer">View</a>
+          <a href="${
+            project.deployed_url.href
+          }" target="_blank" rel="noopener noreferer">
+            Source</a>
+        </div>
+      </div>
+`;
+    items.push(html);
+  });
+
+  return items.join("");
+};
+
 app.get("/", async (_req, res) => {
-  /* const header_query_promise = Stack.ContentType("header") */
-  /*   .Query() */
-  /*   .toJSON() */
-  /*   .find(); */
-  /**/
-  /* const personal_details_query_promise = Stack.ContentType("personal_details") */
-  /*   .Query() */
-  /*   .toJSON() */
-  /*   .find(); */
-  /**/
-  /* const experience_query_promise = Stack.ContentType("experience") */
-  /*   .Query() */
-  /*   .toJSON() */
-  /*   .find(); */
-  /**/
-  /* const query_responses = await Promise.all([ */
-  /*   header_query_promise, */
-  /*   personal_details_query_promise, */
-  /*   experience_query_promise, */
-  /* ]); */
-  /**/
-  /* query_responses.forEach((res) => { */
-  /*   console.log(res.length); */
-  /* }); */
-  /**/
-  /* const [ */
-  /*   header_query_response, */
-  /*   personal_details_query_response, */
-  /*   experience_query_response, */
-  /* ] = query_responses; */
+  const header_query_promise = Stack.ContentType("header")
+    .Query()
+    .toJSON()
+    .find();
+
+  const personal_details_query_promise = Stack.ContentType("personal_details")
+    .Query()
+    .toJSON()
+    .find();
+
+  const experience_query_promise = Stack.ContentType("experience")
+    .Query()
+    .toJSON()
+    .find();
+
+  const projects_query_promise = Stack.ContentType("project")
+    .Query()
+    .toJSON()
+    .find();
+
+  const query_responses = await Promise.all([
+    header_query_promise,
+    personal_details_query_promise,
+    experience_query_promise,
+    projects_query_promise,
+  ]);
+
+  query_responses.forEach((res) => {
+    console.log(res.length);
+  });
+
+  const [
+    header_query_response,
+    personal_details_query_response,
+    experience_query_response,
+    projects_query_response,
+  ] = query_responses;
 
   let final_html = html;
 
@@ -192,6 +237,7 @@ app.get("/", async (_req, res) => {
     personal_details_query_response
   );
   const experience_html = get_experience_html(experience_query_response);
+  const projects_html = get_projects_html(projects_query_response);
 
   final_html = final_html.replace("{{header}}", header_html);
   final_html = final_html.replace(
@@ -199,12 +245,13 @@ app.get("/", async (_req, res) => {
     personal_details_html
   );
   final_html = final_html.replace("{{experience}}", experience_html);
+  final_html = final_html.replace("{{projects}}", projects_html);
 
   res.send(final_html);
 });
 
 app.get("/temp", async (_req, res) => {
-  const resp = await Stack.ContentType("experience").Query().toJSON().find();
+  const resp = await Stack.ContentType("project").Query().toJSON().find();
   console.log(resp);
   res.json({ resp });
 });
