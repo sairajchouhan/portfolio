@@ -142,7 +142,7 @@ const get_experience_html = (data_: ExperienceQueryResponse) => {
 
       <div class="experience_right">
         <div class="experience_card">
-          <a href="{${experience.company_url}}" target="_blank" rel="noopener noreferer">${experience.company_name}</a>
+          <a href="{${experience.company_url.href}}" target="_blank" rel="noopener noreferer">${experience.company_name}</a>
           <h2>${experience.role}</h2>
           <p>
             ${experience.description}
