@@ -227,66 +227,74 @@ const get_blog_html = (data_: BlogQueryResponse) => {
 };
 
 app.get("/", async (_req, res) => {
-  const header_query_promise = Stack.ContentType("header")
-    .Query()
-    .toJSON()
-    .find();
+  try {
+    const header_query_promise = Stack.ContentType("header")
+      .Query()
+      .toJSON()
+      .find();
 
-  const personal_details_query_promise = Stack.ContentType("personal_details")
-    .Query()
-    .toJSON()
-    .find();
+    const personal_details_query_promise = Stack.ContentType("personal_details")
+      .Query()
+      .toJSON()
+      .find();
 
-  const experience_query_promise = Stack.ContentType("experience")
-    .Query()
-    .toJSON()
-    .find();
+    const experience_query_promise = Stack.ContentType("experience")
+      .Query()
+      .toJSON()
+      .find();
 
-  const projects_query_promise = Stack.ContentType("project")
-    .Query()
-    .toJSON()
-    .find();
+    const projects_query_promise = Stack.ContentType("project")
+      .Query()
+      .toJSON()
+      .find();
 
-  const blog_query_promise = Stack.ContentType("blog").Query().toJSON().find();
+    const blog_query_promise = Stack.ContentType("blog")
+      .Query()
+      .toJSON()
+      .find();
 
-  const query_responses = await Promise.all([
-    header_query_promise,
-    personal_details_query_promise,
-    experience_query_promise,
-    projects_query_promise,
-    blog_query_promise,
-  ]);
+    const query_responses = await Promise.all([
+      header_query_promise,
+      personal_details_query_promise,
+      experience_query_promise,
+      projects_query_promise,
+      blog_query_promise,
+    ]);
 
-  console.log(query_responses.length);
+    console.log(query_responses.length);
 
-  const [
-    header_query_response,
-    personal_details_query_response,
-    experience_query_response,
-    projects_query_response,
-    blog_query_response,
-  ] = query_responses;
+    const [
+      header_query_response,
+      personal_details_query_response,
+      experience_query_response,
+      projects_query_response,
+      blog_query_response,
+    ] = query_responses;
 
-  let final_html = html;
+    let final_html = html;
 
-  const header_html = get_header_html(header_query_response);
-  const personal_details_html = get_personal_details_html(
-    personal_details_query_response
-  );
-  const experience_html = get_experience_html(experience_query_response);
-  const projects_html = get_projects_html(projects_query_response);
-  const blog_html = get_blog_html(blog_query_response);
+    const header_html = get_header_html(header_query_response);
+    const personal_details_html = get_personal_details_html(
+      personal_details_query_response
+    );
+    const experience_html = get_experience_html(experience_query_response);
+    const projects_html = get_projects_html(projects_query_response);
+    const blog_html = get_blog_html(blog_query_response);
 
-  final_html = final_html.replace("{{header}}", header_html);
-  final_html = final_html.replace(
-    "{{personal_details}}",
-    personal_details_html
-  );
-  final_html = final_html.replace("{{experience}}", experience_html);
-  final_html = final_html.replace("{{projects}}", projects_html);
-  final_html = final_html.replace("{{blog}}", blog_html);
+    final_html = final_html.replace("{{header}}", header_html);
+    final_html = final_html.replace(
+      "{{personal_details}}",
+      personal_details_html
+    );
+    final_html = final_html.replace("{{experience}}", experience_html);
+    final_html = final_html.replace("{{projects}}", projects_html);
+    final_html = final_html.replace("{{blog}}", blog_html);
 
-  res.send(final_html);
+    res.send(final_html);
+  } catch (err) {
+    console.error(err);
+    res.send("Error");
+  }
 });
 
 /* app.get("/temp", async (_req, res) => { */
