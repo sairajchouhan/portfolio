@@ -11,7 +11,9 @@ import {
   personal_details_query_response,
   experience_query_response,
   projects_query_response,
+  blog_query_response,
   ProjectsQueryResponse,
+  BlogQueryResponse,
 } from "./types";
 
 dotenv.config({
@@ -191,6 +193,39 @@ const get_projects_html = (data_: ProjectsQueryResponse) => {
   return items.join("");
 };
 
+const get_blog_html = (data_: BlogQueryResponse) => {
+  const data = data_[0];
+
+  const items: string[] = [];
+
+  data.forEach((blog) => {
+    const html = `
+      <div class="blog_container">
+        <div class="blog_left">
+          <img
+            src="${blog.image.url}"
+            alt="${blog.title}" />
+        </div>
+
+        <div class="blog_right">
+          <a href="${blog.url.href}"
+            target="_blank" rel="noopener noreferer">
+            ${blog.title}
+          </a>
+          <span class="blog_date_time">${blog.date_of_publish} &#x2022; ${blog.read_minutes} min read</span>
+          <p>
+            ${blog.intro}...
+          </p>
+        </div>
+      </div>
+
+`;
+    items.push(html);
+  });
+
+  return items.join("");
+};
+
 app.get("/", async (_req, res) => {
   const header_query_promise = Stack.ContentType("header")
     .Query()
@@ -212,22 +247,24 @@ app.get("/", async (_req, res) => {
     .toJSON()
     .find();
 
+  const blog_query_promise = Stack.ContentType("blog").Query().toJSON().find();
+
   const query_responses = await Promise.all([
     header_query_promise,
     personal_details_query_promise,
     experience_query_promise,
     projects_query_promise,
+    blog_query_promise,
   ]);
 
-  query_responses.forEach((res) => {
-    console.log(res.length);
-  });
+  console.log(query_responses.length);
 
   const [
     header_query_response,
     personal_details_query_response,
     experience_query_response,
     projects_query_response,
+    blog_query_response,
   ] = query_responses;
 
   let final_html = html;
@@ -238,6 +275,7 @@ app.get("/", async (_req, res) => {
   );
   const experience_html = get_experience_html(experience_query_response);
   const projects_html = get_projects_html(projects_query_response);
+  const blog_html = get_blog_html(blog_query_response);
 
   final_html = final_html.replace("{{header}}", header_html);
   final_html = final_html.replace(
@@ -246,15 +284,16 @@ app.get("/", async (_req, res) => {
   );
   final_html = final_html.replace("{{experience}}", experience_html);
   final_html = final_html.replace("{{projects}}", projects_html);
+  final_html = final_html.replace("{{blog}}", blog_html);
 
   res.send(final_html);
 });
 
-app.get("/temp", async (_req, res) => {
-  const resp = await Stack.ContentType("project").Query().toJSON().find();
-  console.log(resp);
-  res.json({ resp });
-});
+/* app.get("/temp", async (_req, res) => { */
+/*   const resp = await Stack.ContentType("blog").Query().toJSON().find(); */
+/*   console.log(resp); */
+/*   res.json({ resp }); */
+/* }); */
 
 const port = process.env.PORT || 8001;
 app.listen(port, () => {
