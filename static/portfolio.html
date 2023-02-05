@@ -1,39 +1,79 @@
 <!DOCTYPE html>
 <html class="dark-theme" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <title></title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="favicon/android-icon-192x192.png"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Sairaj Chouhan</title>
+  </head>
 
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <body id="root">
+    <header>
+      <nav class="nav">
+        <ul class="nav_list">
+          {{header}}
+        </ul>
+      </nav>
+    </header>
 
-<body id="root">
-  <header>
-    <nav class="nav">
-      <ul class="nav_list">
-        {{header}}
-      </ul>
-    </nav>
-  </header>
+    <section id="home">{{personal_details}}</section>
 
-  <section id="home">{{personal_details}}</section>
+    <section id="experience">
+      <h1>Experience</h1>
+      {{experience}}
+    </section>
 
-  <section id="experience">
-    <h1>Experience</h1>
-    {{experience}}
-  </section>
+    <section id="projects">
+      <h1>Projects</h1>
+      <div class="projects_list">{{projects}}</div>
+    </section>
 
-  <section id="projects">
-    <h1>Projects</h1>
-    <div class="projects_list">{{projects}}</div>
-  </section>
-
-  <section id="blog">
-    <h1>Blog</h1>
-    <div class="blog_list">{{blog}}</div>
-  </section>
-</body>
-
+    <section id="blog">
+      <h1>Blog</h1>
+      <div class="blog_list">{{blog}}</div>
+    </section>
+  </body>
 </html>

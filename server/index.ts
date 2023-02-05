@@ -133,11 +133,23 @@ const get_experience_html = (data_: ExperienceQueryResponse) => {
   const items: string[] = [];
 
   data.forEach((experience) => {
+    const start_date = new Date(experience.start_date);
+    const end_date = new Date(experience.end_date);
+
+    const formated_start_date =
+      start_date.toDateString().split(" ")[1] +
+      " " +
+      start_date.toDateString().split(" ")[3];
+    const formated_end_date =
+      end_date.toDateString().split(" ")[1] +
+      " " +
+      end_date.toDateString().split(" ")[3];
+
     const html = `
     <div class="experience_container">
       <div class="experience_left">
-        <p>${experience.start_date}</p>
-        <p>${experience.end_date}</p>
+        <p>${formated_start_date}</p>
+        <p>${formated_end_date}</p>
       </div>
 
       <div class="experience_right">
@@ -168,8 +180,8 @@ const get_projects_html = (data_: ProjectsQueryResponse) => {
           <h2>${project.title}</h2>
           <ul>
               ${project.project_tags
-                .map((tag) => `<li class="pill" >${tag}</li>`)
-                .join("\n")}
+        .map((tag) => `<li class="pill" >${tag}</li>`)
+        .join("\n")}
           </ul>
           <p>
             ${project.description}
@@ -177,12 +189,10 @@ const get_projects_html = (data_: ProjectsQueryResponse) => {
         </div>
 
         <div class="links">
-          <a href="${
-            project.source_url.href
-          }" target="_blank" rel="noopener noreferer">View</a>
-          <a href="${
-            project.deployed_url.href
-          }" target="_blank" rel="noopener noreferer">
+          <a href="${project.source_url.href
+      }" target="_blank" rel="noopener noreferer">View</a>
+          <a href="${project.deployed_url.href
+      }" target="_blank" rel="noopener noreferer">
             Source</a>
         </div>
       </div>
@@ -199,6 +209,13 @@ const get_blog_html = (data_: BlogQueryResponse) => {
   const items: string[] = [];
 
   data.forEach((blog) => {
+    const date_of_publish = new Date(blog.date_of_publish);
+
+    const formated_date_of_publish =
+      date_of_publish.toDateString().split(" ")[1] +
+      " " +
+      date_of_publish.toDateString().split(" ")[3];
+
     const html = `
       <div class="blog_container">
         <div class="blog_left">
@@ -212,7 +229,7 @@ const get_blog_html = (data_: BlogQueryResponse) => {
             target="_blank" rel="noopener noreferer">
             ${blog.title}
           </a>
-          <span class="blog_date_time">${blog.date_of_publish} &#x2022; ${blog.read_minutes} min read</span>
+          <span class="blog_date_time">${formated_date_of_publish} &#x2022; ${blog.read_minutes} min read</span>
           <p>
             ${blog.intro}...
           </p>
@@ -241,6 +258,7 @@ app.get("/", async (_req, res) => {
     const experience_query_promise = Stack.ContentType("experience")
       .Query()
       .toJSON()
+      .ascending("start_date")
       .find();
 
     const projects_query_promise = Stack.ContentType("project")
@@ -251,6 +269,7 @@ app.get("/", async (_req, res) => {
     const blog_query_promise = Stack.ContentType("blog")
       .Query()
       .toJSON()
+      .descending("date_of_publish")
       .find();
 
     const query_responses = await Promise.all([
