@@ -186,13 +186,17 @@ ul.nav_list {
   color: var(--slate12);
 }
 
-.home_body > p {
+.home_about_text > span {
   font-size: 1rem;
   color: var(--slate11);
   margin-bottom: 1rem;
 }
 
-.home_body > p > span {
+.home_about_text > p {
+  margin-top: 1rem;
+}
+
+.home_about_text > span > strong {
   color: var(--slate12);
 }
 
