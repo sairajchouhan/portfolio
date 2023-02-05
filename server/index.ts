@@ -6,8 +6,10 @@ import Contentstack from "contentstack";
 import {
   HeaderQueryResponse,
   PersonalDetailsQueryResponse,
+  ExperienceQueryResponse,
   header_query_response,
   personal_details_query_response,
+  experience_query_response,
 } from "./types";
 
 dotenv.config({
@@ -122,20 +124,66 @@ const get_personal_details_html = (data_: PersonalDetailsQueryResponse) => {
   return html;
 };
 
+const get_experience_html = (data_: ExperienceQueryResponse) => {
+  const data = data_[0];
+  const items: string[] = [];
+
+  data.forEach((experience) => {
+    const html = `
+    <div class="experience_container">
+      <div class="experience_left">
+        <p>${experience.start_date}</p>
+        <p>${experience.end_date}</p>
+      </div>
+
+      <div class="experience_right">
+        <div class="experience_card">
+          <a href="{${experience.company_url}}" target="_blank" rel="noopener noreferer">${experience.company_name}</a>
+          <h2>${experience.role}</h2>
+          <p>
+            ${experience.description}
+          </p>
+        </div>
+      </div>
+    </div>
+`;
+    items.push(html);
+  });
+
+  return items.join("");
+};
+
 app.get("/", async (_req, res) => {
-  const header_query_promise = Stack.ContentType("header")
-    .Query()
-    .toJSON()
-    .find();
-
-  const personal_details_query_promise = Stack.ContentType("personal_details")
-    .Query()
-    .toJSON()
-    .find();
-
-  const [header_query_response, personal_details_query_response] =
-    await Promise.all([header_query_promise, personal_details_query_promise]);
-
+  /* const header_query_promise = Stack.ContentType("header") */
+  /*   .Query() */
+  /*   .toJSON() */
+  /*   .find(); */
+  /**/
+  /* const personal_details_query_promise = Stack.ContentType("personal_details") */
+  /*   .Query() */
+  /*   .toJSON() */
+  /*   .find(); */
+  /**/
+  /* const experience_query_promise = Stack.ContentType("experience") */
+  /*   .Query() */
+  /*   .toJSON() */
+  /*   .find(); */
+  /**/
+  /* const query_responses = await Promise.all([ */
+  /*   header_query_promise, */
+  /*   personal_details_query_promise, */
+  /*   experience_query_promise, */
+  /* ]); */
+  /**/
+  /* query_responses.forEach((res) => { */
+  /*   console.log(res.length); */
+  /* }); */
+  /**/
+  /* const [ */
+  /*   header_query_response, */
+  /*   personal_details_query_response, */
+  /*   experience_query_response, */
+  /* ] = query_responses; */
 
   let final_html = html;
 
@@ -143,21 +191,20 @@ app.get("/", async (_req, res) => {
   const personal_details_html = get_personal_details_html(
     personal_details_query_response
   );
+  const experience_html = get_experience_html(experience_query_response);
 
   final_html = final_html.replace("{{header}}", header_html);
   final_html = final_html.replace(
     "{{personal_details}}",
     personal_details_html
   );
+  final_html = final_html.replace("{{experience}}", experience_html);
 
   res.send(final_html);
 });
 
 app.get("/temp", async (_req, res) => {
-  const resp = await Stack.ContentType("personal_details")
-    .Query()
-    .toJSON()
-    .find();
+  const resp = await Stack.ContentType("experience").Query().toJSON().find();
   console.log(resp);
   res.json({ resp });
 });

@@ -120,5 +120,70 @@ export const personal_details_query_response = [
   ],
 ];
 
+export const experience_query_response = [
+  [
+    {
+      _version: 1,
+      locale: "en-us",
+      uid: "blt6084ae54b7447396",
+      ACL: {},
+      _in_progress: false,
+      company_name: "iNeuron.ai Pvt. Ltd.",
+      company_url: {
+        title: "iNeuron.ai Pvt. Ltd.",
+        href: "https://ineuron.ai/",
+      },
+      created_at: "2023-02-05T14:06:22.623Z",
+      created_by: "bltae6c61d9d110a17c",
+      description:
+        "I was part of a team working on a job portal for students who enrolled in courses offered by the company. My main responsibilities included developing admin tools to create, update, and manage courses, as well as working on the front-end of the application using React and Redux. I also integrated the application with backend REST APIs using Node.js, ensuring seamless data communication between the frontend and the backend.",
+      end_date: "2022-10-11",
+      role: "FullStack Engineering Intern",
+      start_date: "2022-05-10",
+      tags: [],
+      title: "experience 2",
+      updated_at: "2023-02-05T14:06:22.623Z",
+      updated_by: "bltae6c61d9d110a17c",
+      publish_details: {
+        environment: "bltcfbc84ac492f6de4",
+        locale: "en-us",
+        time: "2023-02-05T14:07:16.234Z",
+        user: "bltae6c61d9d110a17c",
+      },
+    },
+    {
+      _version: 3,
+      locale: "en-us",
+      uid: "blt9bab98c467256c66",
+      ACL: {},
+      _in_progress: false,
+      company_name: "Shift Risk Insurance Brokers",
+      company_url: {
+        title: "Shift Risk Insurance Brokers",
+        href: "https://www.shiftrisk.com/",
+      },
+      created_at: "2023-02-05T10:44:41.974Z",
+      created_by: "bltae6c61d9d110a17c",
+      description:
+        "I worked on a job portal aimed at providing job opportunities to students who had enrolled in courses offered by the company. My key responsibilities included integrating API's in the frontend to enhance the user experience, and optimising the performance of data-driven table components. Through my efforts, I was able to contribute to the smooth functioning of the job portal and ensured a seamless experience for students searching for job opportunities.",
+      end_date: "2021-10-03",
+      role: "Frontend Engineering Intern",
+      start_date: "2021-05-10",
+      tags: [],
+      title: "experience",
+      updated_at: "2023-02-05T14:04:39.329Z",
+      updated_by: "bltae6c61d9d110a17c",
+      publish_details: {
+        environment: "bltcfbc84ac492f6de4",
+        locale: "en-us",
+        time: "2023-02-05T14:04:42.091Z",
+        user: "bltae6c61d9d110a17c",
+      },
+    },
+  ],
+];
+
 export type HeaderQueryResponse = typeof header_query_response;
-export type PersonalDetailsQueryResponse = typeof personal_details_query_response;
+export type PersonalDetailsQueryResponse =
+  typeof personal_details_query_response;
+export type ExperienceQueryResponse = typeof experience_query_response;
