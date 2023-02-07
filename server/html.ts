@@ -6,7 +6,6 @@ import {
   BlogQueryResponse,
 } from "./types";
 
-
 export const get_header_html = (data: HeaderQueryResponse) => {
   let lis: string[] = [];
   data[0][0].link.forEach((link) => {
@@ -22,7 +21,9 @@ export const get_header_html = (data: HeaderQueryResponse) => {
   return lis.join("");
 };
 
-export const get_personal_details_html = (data_: PersonalDetailsQueryResponse) => {
+export const get_personal_details_html = (
+  data_: PersonalDetailsQueryResponse
+) => {
   const data = data_[0][0];
   const html = `
     <div class="home_container">
@@ -148,8 +149,8 @@ export const get_projects_html = (data_: ProjectsQueryResponse) => {
           <h2>${project.title}</h2>
           <ul>
               ${project.project_tags
-        .map((tag) => `<li class="pill" >${tag}</li>`)
-        .join("\n")}
+                .map((tag) => `<li class="pill" >${tag}</li>`)
+                .join("\n")}
           </ul>
           <p>
             ${project.description}
@@ -157,10 +158,12 @@ export const get_projects_html = (data_: ProjectsQueryResponse) => {
         </div>
 
         <div class="links">
-          <a href="${project.source_url.href
-      }" target="_blank" rel="noopener noreferer">View</a>
-          <a href="${project.deployed_url.href
-      }" target="_blank" rel="noopener noreferer">
+          <a href="${
+            project.source_url.href
+          }" target="_blank" rel="noopener noreferer">View</a>
+          <a href="${
+            project.deployed_url.href
+          }" target="_blank" rel="noopener noreferer">
             Source</a>
         </div>
       </div>
