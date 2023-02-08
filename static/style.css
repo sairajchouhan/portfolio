@@ -132,7 +132,7 @@ ul.nav_list {
 
 .nav_list_a:hover {
   color: var(--slate12);
-  background: var(--slate4);
+  text-decoration: underline;
 }
 
 .pill {
