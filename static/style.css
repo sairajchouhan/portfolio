@@ -436,3 +436,37 @@ ul.nav_list {
   display: flex;
   flex-direction: column;
 }
+
+#contact > h1 {
+  margin-bottom: 2rem;
+}
+
+#contact > input,
+textarea {
+  display: block;
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid var(--slate7);
+  background-color: var(--slate1);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: var(--slate12);
+  transition: all 0.15s ease-in;
+  margin-bottom: 1rem;
+}
+
+#contact > button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: var(--slate9);
+  background-color: var(--slate9);
+  color: white;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  /* transition: all 0.15s ease-in; */
+}
