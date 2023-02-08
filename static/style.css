@@ -339,9 +339,8 @@ ul.nav_list {
   align-items: center;
   border-top: 1px solid var(--slate7);
   margin-top: auto;
-  position: relative
+  position: relative;
 }
-
 
 .project .links::after {
   content: "";
@@ -415,7 +414,6 @@ ul.nav_list {
   margin-bottom: 0.25rem;
 }
 
-
 .blog_right > a:hover {
   text-decoration: underline;
 }
@@ -429,4 +427,12 @@ ul.nav_list {
 .blog_date_time {
   color: var(--slate11);
   font-size: 0.8rem;
+}
+
+/* contact setction */
+
+#contact {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
 }
