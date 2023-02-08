@@ -5,6 +5,12 @@ const handleSubmit = (e) => {
   const name = document.querySelector('input[name="name"]');
   const email = document.querySelector('input[name="email"]');
   const message = document.querySelector('textarea[name="message"]');
+  const button = document.querySelector('button[type="submit"]');
+
+  // disable the button
+  button.disabled = true;
+  button.innerText = "Submiting...";
+  button.style.opacity = 0.5;
 
   fetch(`${window.location.origin}/contact`, {
     method: "POST",
@@ -17,7 +23,7 @@ const handleSubmit = (e) => {
       "Content-Type": "application/json",
     },
   })
-    .then((res) => {
+    .then(() => {
       name.value = "";
       email.value = "";
       message.value = "";
@@ -27,11 +33,16 @@ const handleSubmit = (e) => {
         type: "success",
       });
     })
-    .catch((err) => {
+    .catch(() => {
       show_message({
         message: "Something went wrong",
         type: "error",
       });
+    })
+    .finally(() => {
+      button.disabled = false;
+      button.innerText = "Submit";
+      button.style.opacity = 1;
     });
 };
 
